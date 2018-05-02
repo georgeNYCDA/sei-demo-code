@@ -1,0 +1,46 @@
+
+.bg-red {
+	background: red;
+}
+
+.bg-yellow {
+	background: yellow;
+}
+
+.bg-green {
+	background: green;
+}
+
+.bg-blue {
+	background: blue;
+}
+
+.bg-black {
+	background: black;
+}
+
+.bg-purple {
+	background: purple;
+}
+.lg-45 {
+	line-height: 45px;
+}
+
+
+.border-active {
+	border-left: solid 3px #297AA5;
+}
+
+.border-inactive {
+	border-left: solid 3px #D4D4D4;
+}
+
+@media only screen and (max-width: 576px) {
+	.sm-hide-border {
+		border: none !important;
+	}
+
+	.sm-border-top {
+		border-top: 1px solid #dee2e6;
+	}
+}
