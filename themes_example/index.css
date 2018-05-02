@@ -1,0 +1,60 @@
+.header, .footer {
+	height: 300px;
+	width: 100%;
+}
+
+.content {
+	height: 600px;
+	width: 100%;
+}
+
+
+.morning .header {
+	background: #F2CFBC
+}
+
+.morning .content {
+	background: #857AA1
+}
+
+.morning .footer {
+	background: #AEA68B
+}
+
+.morning .afternoon-message, .morning .night-message {
+	display: none;
+}
+
+
+.afternoon .header {
+	background: #24BBF8
+}
+
+.afternoon .content {
+	background: #61BF4A
+}
+
+.afternoon .footer {
+	background: #D2E0C2
+}
+
+.afternoon .morning-message, .afternoon .night-message {
+	display: none;
+}
+
+
+.night .header {
+	background: #03226C
+}
+
+.night .content {
+	background: #175584
+}
+
+.night .footer {
+	background: #0C2E48
+}
+
+.night .morning-message, .night .afternoon-message {
+	display: none;
+}
