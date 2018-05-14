@@ -16,4 +16,3 @@ elsif ARGV.length == 1
 else
 	puts my_chuck_jokes.help.red
 end
-
