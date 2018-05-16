@@ -1,0 +1,11 @@
+<h1>
+	
+	Hello <%= @name_to_display.capitalize %>, thank you for placing an order
+</h1>
+
+
+<% if @time_stamp != nil %>
+	<h3>
+		The current date and time is: <%= @time_stamp %>
+	</h3>
+<% end %>

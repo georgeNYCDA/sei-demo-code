@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My First Sinatra App</title>
+	<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+	
+	<ul>
+		<li>
+			<a href="/contact">Contact Page</a>
+		</li>
+		<li>
+			<a href="/about">About Us</a>
+		</li>
+		<li>
+			<a href="/order-form">Order Form</a>
+		</li>
+	</ul>
+	<!-- my page specific content should go here -->
+	<%=  yield  %>
+
+
+	<footer>
+		Facebook, Instagram, etc
+	</footer>
+
+	<script type="text/javascript" src="/index.js"></script>
+</body>
+</html>

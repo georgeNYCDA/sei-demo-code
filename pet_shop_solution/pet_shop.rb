@@ -1,3 +1,5 @@
+require 'byebug'
+
 require './queue'
 require './animal'
 
@@ -17,6 +19,9 @@ while user_input != '4' do
     print "Selected Action: "
 
     user_input = gets.strip
+
+
+    byebug
 
     case user_input
     when '1'
