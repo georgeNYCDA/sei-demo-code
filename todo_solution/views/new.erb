@@ -1,0 +1,42 @@
+<div class="row pt-4">
+	<div class="col">
+		<h2>SEI Disclaimer</h2>
+	</div>
+
+	<div class="col">
+		<h2>Create a new Todo</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		<p>We make no guarantees that any todos you create will be around in 30 seconds.</p>
+
+		<p>Having said that, we strongly recommend completing any todos created as quickly as possible!</p>
+
+		<p>
+			<a href="/" class="btn btn-outline-dark">Home</a>
+		</p>
+	</div>
+	<div class="col">
+		<form action="/todo/create" method="POST">
+			<div class="row">
+				<div class="col">
+					<label for="">Todo Name</label>
+					<input type="text" name="name" class="form-control">
+				</div>
+			</div>
+			<div class="row mt-4">
+				<div class="col">
+					<label for="">Todo Description</label>
+					<textarea cols="30" rows="10" name="description" class="form-control"></textarea>
+				</div>
+			</div>
+			<div class="row mt-4">
+				<div class="col">
+					<input type="submit" class="btn btn-primary">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+

@@ -1,0 +1,45 @@
+<div class="row mt-4">
+	<div class="col">
+		<h3 class="text-center">Welcome to SEI's Forgetful Todo List</h3>
+	</div>
+</div>
+
+	<% if @todos.empty? %>
+	<div class="row">
+		<div class="col">
+			<p class="text-center">
+				Looks like you haven't created any todos yet. Get started today by 
+				<a href="/todo/new">creating your first one</a>
+			</p>		
+		</div>
+	</div>
+	<% else %>
+		<div class="row mt-5">
+			<div class="col">
+				<h3>Hurry up and complete these todos</h3>
+				<p>These todo's are going to disappear as soon as "someone" restarts the server so ándale!</p>
+				<p>
+					<a href="/todo/new">Create a New Todo</a>
+				</p>
+			</div>
+			<div class="col">
+				<h3>Current Todos</h3>
+				<ul>
+					<% @todos.each do |todo| %>
+						<li class="border p-3 row">
+							<div class="col-lg-9">
+								Name: <%= todo.name %>
+								<br>
+								Description: <%= todo.description %>
+							</div>
+							<div class="col-lg-3">
+								<a href="/todo/edit/<%= todo.id %>" class="btn btn-outline-dark btn-sm">Edit</a>	
+							</div>
+						</li>	
+					<% end %>
+				</ul>
+			</div>
+		</div>		
+	<% end %>
+</div>
+
