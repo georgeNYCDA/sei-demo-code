@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'byebug'
+require 'mailgun'
 
 require './todo'
 require './todo_manager'
@@ -17,6 +18,19 @@ end
 
 post '/todo/create' do
 	manager.add_todo(params)
+
+	mg_client = Mailgun::Client.new(ENV['MAILGUN_API_KEY'], 'api.mailgun.net','v3',false,false)	
+
+	# Define your message parameters
+	message_params =  { 
+		from: 'my_email@nycda.com',
+		to: 'my_email@nycda.com',
+		subject: 'The Ruby SDK is awesome!',
+		html: erb(:my_mail_template)
+	}
+
+	# Send your message through the client
+	mg_client.send_message(ENV['MAILGUN_API_DOMAIN'], message_params)
 
 	redirect '/'
 end
