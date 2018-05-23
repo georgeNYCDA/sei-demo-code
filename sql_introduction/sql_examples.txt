@@ -1,0 +1,138 @@
+Step 1: Install Postgres
+
+Step 2: Create Database
+
+Step 3: Install Postico
+
+Step 4: Establish Connection in Postico
+
+Step 5: Create Table
+
+	Key Concepts:
+		- Create a table by defining the columns the table will have.
+		- Each column will have a datatype associated with it.
+		- Each table will need an id column known as the primary key.
+		- DataType options:
+			* int
+			* varchar(<size>)
+			* TEXT
+			* bool
+			* date
+		- Schema Definition: all the tables and their columns
+
+		CREATE TABLE students (
+		    id int PRIMARY KEY,
+		    first_name varchar(255),
+		    last_name varchar(255),
+		    gender varchar(255)
+		);
+
+	Exercises:
+		- Create a table todos
+			* should have columns id (PK), name varchar(255), description TEXT,priority varchar(255)
+		- Create a table chores
+			* should have columns id (PK), name, description, assignee, due_date, date_completed
+
+Step 6: Insert Values
+	Key Concepts
+		* We can insert data into a database.
+
+	Syntax:
+		INSERT INTO students 
+			(id, first_name, last_name, address_line_one, city, state, postal_code, country) 
+		VALUES 
+			(1, 'George', 'Dagher', 'male');
+	Exercises:
+		* Insert 3 todos in your todo tables
+		* Insert records for all students in our class.
+
+
+Step 7: Relationships
+	Key Concepts:
+		- the PK of one table is stored in another table (tablename_id)
+		- 3 Major Types
+			* one-to-one (each student has one laptop)
+			* one-to-many (each student has many submissions)
+			* many-to-many (between students and seat_assignment) acheived through two tables
+
+	Exercises:
+		- create table 'laptops'
+			* id, brand, operating_system, student_id
+			* insert the values that correspond to everyone sitting at your table (including yourself).
+		- create table 'submissions'
+			* id, assignment_name, date_submitted, student_id, score
+			* insert values for the submissions that you and your neighbor have submitted
+		- create table 'classroom_seats'
+			* id, table_num (1, 2, 3, 4), seat_letter (A, B, C, D)
+			* insert values for all seats in our class
+		- create table 'student_classroom_seats'
+			* id, student_id, classroom_seat_id
+			* insert values for both seats you and your neighbor have had.
+
+Step 8: Querying
+	Key Concepts:
+		- Select which column(s) and from what table(s)
+			* selecting all columns
+			* selecting some columns
+			* renaming column names in output
+
+		- Filter the data
+			* where clause conditions
+				=, <>, >, >=, <, <=, LIKE %, BETWEEN
+				AND, OR, NOT
+				IS NULL, IS NOT NULL
+				IN
+
+		- Order the data
+			* order by column(s) and direction (ASC vs DESC)
+
+		- functions
+			* lower(), upper()
+			
+	Syntax:
+		SELECT id, first_name, last_name
+		FROM students
+		WHERE gender = 'male'
+
+	Exercises:
+		* List the first and last name of all the students in our classroom
+		* List the boys we have in our classroom.
+		* List the girls in order of the first name
+		* List the students whose last name starts with an M
+		* List brand of laptops running windows
+		* List all other non windows laptops
+		* List the submission date of all pokedex submissions
+
+
+Step 9: JOINS
+	Key Concepts:
+		- Combining more than one tables into a single result table.
+		- Need to have the intersection column!!
+		- Venn diagram (inner join vs left join vs right join vs full join)
+
+	Syntax:
+		SELECT * from students
+		JOIN laptops ON students.id = laptops.student_id
+		WHERE students.name = 'George'
+
+	Exercises:
+	 	* List the first, last name of students with macs
+	 	* List the assignment name and score for only your submissions (filter off your first and last name)
+	 	* List the student first and last name who have sat in seats 1A
+	 	
+
+Step 10: UPDATE
+	The update command allows us to update existing records
+
+	-- updates existing record where condition is met
+		
+		UPDATE [table]
+		SET [column1] = [value1], [column2] = [value2], ...
+		WHERE [condition];
+	
+Step 11: DELETE
+	The delete command allows us to delete existing records
+
+	-- deletes records from table where condition is met
+		
+		DELETE FROM [table] WHERE [condition];	 	
