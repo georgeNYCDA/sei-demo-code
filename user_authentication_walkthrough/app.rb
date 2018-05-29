@@ -17,6 +17,11 @@ get('/signup') do
 end
 
 post('/signup') do
+	existing_user = User.find_by(email: params[:email])
+	if existing_user != nil
+		return redirect '/login'
+	end
+
 	user = User.create(
 		first_name: params[:f_name],
   		last_name: params[:l_name],
@@ -26,6 +31,27 @@ post('/signup') do
 	session[:user_id] = user.id
 	redirect '/dashboard'
 end
+
+get('/login') do 
+	erb :login	
+end
+
+post('/login') do
+	# params = {user_email: , password:}
+
+	user = User.find_by(email: params[:user_email])
+	if user.nil?
+		return redirect '/login'
+	end
+
+	unless user.password == params[:password]
+		return redirect '/login'
+	end
+
+	session[:user_id] = user.id
+	redirect '/dashboard'
+end
+
 
 get('/dashboard') do
 	user_id = session[:user_id]
