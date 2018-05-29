@@ -1,0 +1,10 @@
+defaults: &defaults
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+  
+development:
+  <<: *defaults
+  database: user_auth_walkthrough
+  
