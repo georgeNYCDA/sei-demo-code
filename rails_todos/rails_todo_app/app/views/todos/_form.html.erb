@@ -1,0 +1,15 @@
+<%= form_for @todo do |f| %>
+	<div>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+
+	<div>
+		<%= f.label :description %>
+		<%= f.text_field :description %>
+	</div>
+
+	<div>
+		<%= f.submit %>
+	</div>	
+<% end %>
