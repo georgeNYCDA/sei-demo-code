@@ -1,0 +1,46 @@
+<h2>Welcome to Rails Todos</h2>
+
+<h4>
+	<%= link_to 'Create New Todo', new_todo_path  %>
+</h4>
+
+<h5 class=todos-border-10>
+	<%= number_to_currency(1234567890.50) %>
+</h5>
+
+<div >
+	<%= image_tag image_path('download.jpg'), title:'blah', alt: 'My Cover' %>
+
+	<%= image_tag image_path('folder_1/download-1.jpg') %>
+</div>
+<div class="mb-4">
+	<% @todos.each do |todo| %>
+		<div class="mb-4">
+			<div id="name-div">
+				Name: <%= todo.name %>
+			</div>
+
+			<div>
+				Description: <%= todo.description %>
+			</div>
+
+			<div>
+				Comments: 
+				<% todo.todo_comments.each do |comment| %>
+
+					<div>
+						<%= comment.content %>
+					</div>
+
+				<% end %>
+			</div>
+
+			<div>
+				<%= link_to 'View', todo, 'data-disable-with': 'Processing...' %>
+				<%= link_to 'Edit', edit_todo_path(todo) %>
+				<%= link_to 'Add Comment', new_todo_todo_comment_path(todo) %>
+				<%= link_to 'Delete', todo, 'data-method': "DELETE" %>
+			</div>
+		</div>
+	<% end %>
+</div>

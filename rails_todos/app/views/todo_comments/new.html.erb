@@ -1,0 +1,13 @@
+<h3>Create a new todo comment</h3>
+
+
+<%= form_for [@todo, @todo_comment] do |f| %>
+
+	<%= f.label :content, 'Add your comment below' %>
+	<%= f.text_area :content %>
+
+	<div>
+		<%= f.submit %>
+	</div>
+
+<% end %>
