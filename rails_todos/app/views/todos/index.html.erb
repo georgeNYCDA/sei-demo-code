@@ -1,5 +1,5 @@
-<h2>Welcome to Rails Todos</h2>
-
+<h2>Welcome to Rails Todos <%= @user.email %></h2>
+	
 <h4>
 	<%= link_to 'Create New Todo', new_todo_path  %>
 </h4>
@@ -16,6 +16,7 @@
 <div class="mb-4">
 	<% @todos.each do |todo| %>
 		<div class="mb-4">
+			
 			<div id="name-div">
 				Name: <%= todo.name %>
 			</div>

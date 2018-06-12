@@ -1,11 +1,13 @@
 class TodosController < ApplicationController
+	before_action :authenticate_user!
 
 	def index
+		@user = current_user
 		@todos = Todo.all.order(:created_at)
 	end
 
 	def show
-		@todo = Todo.find(params[:id])
+		@todo = Todo.find(params[:ids])
 	end
 
 	def new
@@ -17,6 +19,7 @@ class TodosController < ApplicationController
 		# Todo.create({name: '...', description: '...'})
 		Todo.create(todo_params)
 		flash[:success] = 'Your todo has been successfully created'
+
 		redirect_to todos_path
 	end
 

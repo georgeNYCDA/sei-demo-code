@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+devise_for :users, controllers: {
+  registrations: 'users/registrations',
+  sessions: 'users/sessions'
+}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  root to: "home#index"
+  
   resources :todos do
 	resources :todo_comments, only: [:new, :create]
 

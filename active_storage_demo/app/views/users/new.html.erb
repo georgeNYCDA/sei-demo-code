@@ -1,0 +1,31 @@
+<h3>Create new User</h3>
+
+
+<% @users.each do |user| %>
+	
+	<div>
+	<%= "#{user.first_name} #{user.last_name}" %>
+	<% if user.user_profile.attached? %>
+		<%= image_tag url_for(user.user_profile) %>
+	<% end %>
+	</div>
+<% end %>
+
+<%= form_for @user do |f| %>
+	<%= f.label :first_name %>
+	<%= f.text_field :first_name %>
+	<br>
+	<%= f.label :last_name %>
+	<%= f.text_field :last_name %>
+	<br>
+
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+	<br>
+	
+	<%= f.label :user_profile %>
+	<%= f.file_field :user_profile %>
+
+	<br>
+	<%= f.submit %>
+<% end %>
