@@ -1,3 +1,11 @@
+<% if @todo.errors.any? %>
+	<ul>
+		<% @todo.errors.full_messages.each do |error_message| %>
+			<li><%= error_message %></li>
+		<% end %>
+	</ul>
+<% end %>
+
 <%= form_for @todo do |f| %>
 	<div>
 		<%= f.label :name %>
@@ -7,6 +15,11 @@
 	<div>
 		<%= f.label :description %>
 		<%= f.text_field :description %>
+	</div>
+
+	<div>
+		<%= f.label :priority %>
+		<%= f.select :priority, options_for_select([['High Priority', 'H'], ['Medium', 'M'], ['Low', 'L']]) %>
 	</div>
 
 	<div>

@@ -17,10 +17,15 @@ class TodosController < ApplicationController
 	def create
 		# the below will do the following
 		# Todo.create({name: '...', description: '...'})
-		Todo.create(todo_params)
-		flash[:success] = 'Your todo has been successfully created'
+		@todo = Todo.create(todo_params)
 
-		redirect_to todos_path
+		if @todo.valid?
+			flash[:success] = 'Your todo has been successfully created'
+			redirect_to todos_path
+		else
+			flash[:error] = 'Missing information'
+			render :new
+		end
 	end
 
 	def edit
@@ -46,6 +51,6 @@ class TodosController < ApplicationController
 		# will return something that looks like this
 		# {name: '...', :description: '...'}
 		
-		params.require(:todo).permit(:name, :description)
+		params.require(:todo).permit(:name, :description, :priority)
 	end
 end
