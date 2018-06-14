@@ -15,24 +15,19 @@
 </div>
 <div class="mb-4">
 	<% @todos.each do |todo| %>
-		<div class="mb-4">
-			
+		<div class="mb-4 main-todo">
 			<div id="name-div">
 				Name: <%= todo.name %>
 			</div>
-
 			<div>
 				Description: <%= todo.description %>
 			</div>
-
 			<div>
 				Comments: 
 				<% todo.todo_comments.each do |comment| %>
-
 					<div>
 						<%= comment.content %>
 					</div>
-
 				<% end %>
 			</div>
 
@@ -40,7 +35,8 @@
 				<%= link_to 'View', todo, 'data-disable-with': 'Processing...' %>
 				<%= link_to 'Edit', edit_todo_path(todo) %>
 				<%= link_to 'Add Comment', new_todo_todo_comment_path(todo) %>
-				<%= link_to 'Delete', todo, 'data-method': "DELETE" %>
+				<%#= link_to 'Delete', todo, class: 'delete-todo' %>
+				<%= link_to 'Delete', todo, method: :delete, remote: true, class: 'delete-todo' %>
 			</div>
 		</div>
 	<% end %>

@@ -3,16 +3,40 @@
 
 
 $(document).ready(function() {
-	
-})
+	if (document.querySelector('body.todos.index') == undefined) {
+		return;
+	}
 
 
-// window.addEventListener('DOMContentLoaded', function() {
-// 	console.log("I'm inside of todos.js")
+	// $('.delete-todo').click(function (e) {
+	// 	e.preventDefault();
+	// 	let deletionUrl = e.target.getAttribute('href');
 
-// 	let nameDiv = document.getElementById('name-div');
-// 	if (nameDiv) {
-// 		nameDiv.style.color = 'red'	
-// 	}
-	
-// })
+	// 	$.ajax({
+	// 		method: 'DELETE',
+	// 		url: deletionUrl,
+	// 		success: function (data) {
+	// 			$(e.target).parents('.main-todo').remove();
+	// 			toastr.success('Your todo has been successfully deleted');
+	// 		}
+	// 	});
+	// });
+
+
+	$('.delete-todo').on('ajax:success', function(e) {
+		$(e.target).parents('.main-todo').remove();
+		toastr.success('Your todo has been successfully deleted');
+	});
+});
+
+
+
+
+$(document).ready(function() {
+	if (document.querySelector('body.todos.new, body.todos.edit') == undefined) {
+		return;
+	}
+
+
+	console.log('this stuff is visible on my new and edit page');
+});

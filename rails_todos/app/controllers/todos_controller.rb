@@ -1,5 +1,6 @@
 class TodosController < ApplicationController
 	before_action :authenticate_user!
+	skip_before_action :verify_authenticity_token, only: [:destroy]
 
 	def index
 		@user = current_user
@@ -42,7 +43,7 @@ class TodosController < ApplicationController
 	def destroy
 		Todo.destroy(params[:id])
 
-		redirect_to todos_path
+		render json: {status: 'boom success', message: 'todo was successfully deleted'}
 	end
 
 	private
