@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+priorities = [{
+	name: 'High Priority',
+	code: 'H'
+}, {
+	name: 'Medium Priority',
+	code: 'M'
+}, {
+	name: 'Low Priority',
+	code: 'L'
+}]
+
+priorities.each do |p|
+	TodoPriority.create(p) unless TodoPriority.exists?(code: p[:code])
+end	

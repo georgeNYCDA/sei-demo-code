@@ -19,7 +19,7 @@
 
 	<div>
 		<%= f.label :priority %>
-		<%= f.select :priority, options_for_select([['High Priority', 'H'], ['Medium', 'M'], ['Low', 'L']]) %>
+		<%= f.select :priority, options_for_select(@priorities.map {|p| [p.name, p.code]}) %>
 	</div>
 
 	<div>

@@ -13,6 +13,7 @@ class TodosController < ApplicationController
 
 	def new
 		@todo = Todo.new
+		@priorities = TodoPriority.all
 	end
 
 	def create
@@ -31,6 +32,7 @@ class TodosController < ApplicationController
 
 	def edit
 		@todo = Todo.find(params[:id])
+		@priorities = TodoPriority.all
 	end
 
 	def update
