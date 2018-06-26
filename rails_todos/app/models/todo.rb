@@ -5,4 +5,7 @@ class Todo < ApplicationRecord
 
 
 	has_many :todo_comments, dependent: :destroy
+
+	scope :created_after, ->(my_time) { where("created_at >= ?", my_time) }
+	scope :high_priority, -> { where(priority: 'H') }
 end

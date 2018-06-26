@@ -4,7 +4,7 @@ class TodosController < ApplicationController
 
 	def index
 		@user = current_user
-		@todos = Todo.all.order(:created_at)
+		@todos = Todo.created_after(Date.today - 5.days).high_priority.order(:created_at)
 	end
 
 	def show
