@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  content: MyString
-  todo: one
+# one:
+#   content: MyString
+#   todo: one
 
-two:
-  content: MyString
-  todo: two
+# two:
+#   content: MyString
+#   todo: two

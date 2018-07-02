@@ -8,4 +8,9 @@ class Todo < ApplicationRecord
 
 	scope :created_after, ->(my_time) { where("created_at >= ?", my_time) }
 	scope :high_priority, -> { where(priority: 'H') }
+
+
+	def self.all_todo_names
+		Todo.all.pluck(:name).join(' ')
+	end
 end
