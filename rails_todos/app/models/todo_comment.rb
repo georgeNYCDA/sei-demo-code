@@ -1,3 +1,6 @@
 class TodoComment < ApplicationRecord
-  belongs_to :todo
+	include DateLabel
+  
+  	belongs_to :todo
+
 end

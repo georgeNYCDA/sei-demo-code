@@ -1,5 +1,8 @@
 class TodosController < ApplicationController
 	before_action :authenticate_user!
+	before_action :set_todo, only: [:show, :edit]
+	before_action :set_priorities, only: [:new, :edit]
+
 	skip_before_action :verify_authenticity_token, only: [:destroy]
 
 	def index
@@ -8,18 +11,18 @@ class TodosController < ApplicationController
 	end
 
 	def show
-		@todo = Todo.find(params[:ids])
+		
 	end
 
 	def new
 		@todo = Todo.new
-		@priorities = TodoPriority.all
 	end
 
 	def create
 		# the below will do the following
 		# Todo.create({name: '...', description: '...'})
 		@todo = Todo.create(todo_params)
+
 
 		if @todo.valid?
 			flash[:success] = 'Your todo has been successfully created'
@@ -31,8 +34,7 @@ class TodosController < ApplicationController
 	end
 
 	def edit
-		@todo = Todo.find(params[:id])
-		@priorities = TodoPriority.all
+		
 	end
 
 	def update
@@ -49,6 +51,14 @@ class TodosController < ApplicationController
 	end
 
 	private
+
+	def set_todo
+		@todo = Todo.find(params[:id])
+	end
+
+	def set_priorities
+		@priorities = TodoPriority.all
+	end
 
 	def todo_params
 		# will return something that looks like this

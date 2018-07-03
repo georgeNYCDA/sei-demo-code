@@ -23,10 +23,22 @@
 				Description: <%= todo.description %>
 			</div>
 			<div>
+				Created At: <%= todo.created_at_label %>
+			</div>
+			<div>
+				Updated At: <%= todo.updated_at_label %>
+			</div>
+			<div>
 				Comments: 
 				<% todo.todo_comments.each do |comment| %>
 					<div>
 						<%= comment.content %>
+						<div>
+							Created At: <%= comment.created_at_label %>
+						</div>
+						<div>
+							Updated At: <%= comment.updated_at_label %>
+						</div>
 					</div>
 				<% end %>
 			</div>
