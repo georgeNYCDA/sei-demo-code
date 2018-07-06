@@ -11,18 +11,19 @@ class TodosController < ApplicationController
 	end
 
 	def show
-		
+		return redirect_to todos_path if @todo.nil?
 	end
 
 	def new
 		@todo = Todo.new
+		# @todo.address = Address.new
+		@todo.build_address # ^-- same as above
 	end
 
 	def create
 		# the below will do the following
 		# Todo.create({name: '...', description: '...'})
 		@todo = Todo.create(todo_params)
-
 
 		if @todo.valid?
 			flash[:success] = 'Your todo has been successfully created'
@@ -53,7 +54,12 @@ class TodosController < ApplicationController
 	private
 
 	def set_todo
-		@todo = Todo.find(params[:id])
+		begin
+			@todo = Todo.find(params[:id])
+		rescue StandardError => e
+			flash[:error] = 'Invalid Id Provided'
+			@todo = nil
+		end
 	end
 
 	def set_priorities
@@ -64,6 +70,11 @@ class TodosController < ApplicationController
 		# will return something that looks like this
 		# {name: '...', :description: '...'}
 		
-		params.require(:todo).permit(:name, :description, :priority)
+		params.require(:todo).permit(
+			:name, 
+			:description, 
+			:priority, 
+			:address_attributes => [:address_line_one, :city, :state, :postal_code]
+		)
 	end
 end

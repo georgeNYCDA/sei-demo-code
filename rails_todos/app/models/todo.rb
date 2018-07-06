@@ -12,6 +12,9 @@ class Todo < ApplicationRecord
 
 
 	has_many :todo_comments, dependent: :destroy
+	has_one :address
+
+	accepts_nested_attributes_for :address
 
 	scope :created_after, ->(my_time) { where("created_at >= ?", my_time) }
 	scope :high_priority, -> { where(priority: 'H') }

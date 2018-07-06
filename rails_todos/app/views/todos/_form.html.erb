@@ -21,7 +21,26 @@
 		<%= f.label :priority %>
 		<%= f.select :priority, options_for_select(@priorities.map {|p| [p.name, p.code]}) %>
 	</div>
-
+	<div>
+		<%= f.fields_for :address, @todo.address do |address_form| %>
+			<div>
+				<%= address_form.label :address_line_one %>
+				<%= address_form.text_field :address_line_one %>
+			</div>
+			<div>
+				<%= address_form.label :city %>
+				<%= address_form.text_field :city %>
+			</div>
+			<div>
+				<%= address_form.label :state %>
+				<%= address_form.text_field :state %>
+			</div>
+			<div>
+				<%= address_form.label :postal_code %>
+				<%= address_form.text_field :postal_code %>
+			</div>
+		<% end %>
+	</div>
 	<div>
 		<%= f.submit %>
 	</div>	
